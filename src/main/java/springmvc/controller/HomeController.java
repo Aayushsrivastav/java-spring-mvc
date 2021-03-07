@@ -7,12 +7,13 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
 	
-	@RequestMapping("/home")
+	@RequestMapping(path="/home", method = RequestMethod.GET)
 	public String home(Model model) {
 		System.out.println("Home url");
 		
@@ -54,6 +55,14 @@ public class HomeController {
 		mav.addObject("time", now);
 		//setting view
 		mav.setViewName("help");
+		
+		//Marks
+		List<Integer> mark = new ArrayList<Integer>();
+		mark.add(988);
+		mark.add(844848);
+		mark.add(8488);
+		
+		mav.addObject("marks", mark);
 		
 		return mav;
 	}
